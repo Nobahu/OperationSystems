@@ -64,11 +64,15 @@ void Factory::Consumer()
 				break;
 			}
 
-			detail = std::move(details.front());
-			details.pop();
+			if (!details.empty()) {
+				detail = std::move(details.front());
+				details.pop();
+			}
 		}
 
-		std::cout << "Detail was used: " << detail->_type << '\n';
+		if (detail) {
+			std::cout << "Detail was used: " << detail->_type << '\n';
+		}
 	}
 }
 
