@@ -16,7 +16,9 @@ private:
     void setup_signal_handler() {
         struct sigaction sa;
         sigemptyset(&sa.sa_mask);
-        sa.sa_handler = [](int sig) {};
+	    static auto handler = [](int sig) {
+	        signal_received = 1;
+	    };
         sa.sa_flags = SA_RESTART;
         sigaction(SIGHUP, &sa, nullptr);
     }
