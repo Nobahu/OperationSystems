@@ -52,7 +52,7 @@ static ssize_t proc_file_read(struct file *filePtr, char __user *buffer,
 	}
 	days_left = calculate();
 
-	snprintf(message, sizeof(message), "Days until China new year: %d days\n", days_left);
+	len = snprintf(message, sizeof(message), "Days until China new year: %d days\n", days_left);
 
 	if (len > bufferLength) {
 		len = bufferLength;
